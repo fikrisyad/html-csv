@@ -61,17 +61,25 @@
       
       function format_img(img){
         if (img)
-          return '<img src="https://dscv-cs.east.edge.storage-yahoo.jp/Mturk3_2019Oct/' + img + '.jpg">';
+          var img1 = '<img src="https://dscv-cs.east.edge.storage-yahoo.jp/Mturk3_2019Oct/' + img + '.jpg">';
+          var img2 = '<img src="https://dscv-cs.east.edge.storage-yahoo.jp/2019_topic_v2/' + img + '.jpg">';
+          return img1 + '<br>' img2;
         else
           return "";
       }
 
+      
       CsvToHtmlTable.init({
         csv_path: 'data/dataset.csv',
         element: 'table-container', 
         allow_download: true,
         csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": true},
+        datatables_options: {"paging": true, 
+                            columnDefs:[{
+                                "targets":[4,5,6,7,8,9],
+                                "visible": false
+                                }]
+                            },
         custom_formatting: [[0, format_img]]
       });
     </script>
