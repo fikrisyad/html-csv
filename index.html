@@ -58,6 +58,13 @@
         else
           return "";
       }
+      
+      function format_img(img){
+        if (img)
+          return '<img src="https://dscv-cs.east.edge.storage-yahoo.jp/Mturk3_2019Oct/' + img + '.jpg">';
+        else
+          return "";
+      }
 
       CsvToHtmlTable.init({
         csv_path: 'data/dataset.csv',
@@ -65,7 +72,7 @@
         allow_download: true,
         csv_options: {separator: ',', delimiter: '"'},
         datatables_options: {"paging": true},
-        custom_formatting: [[4, format_link]]
+        custom_formatting: [[0, format_img]]
       });
     </script>
   </body>
